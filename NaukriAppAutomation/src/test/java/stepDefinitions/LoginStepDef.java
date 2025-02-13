@@ -2,8 +2,6 @@ package stepDefinitions;
 
 import static org.junit.Assert.*;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 
 import factory.Base;
