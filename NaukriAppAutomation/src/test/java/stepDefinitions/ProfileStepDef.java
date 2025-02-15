@@ -21,7 +21,7 @@ public class ProfileStepDef {
 	WebDriver driver;
 	LoginPageObj lp;
 	ProfilePageObj pp;
-	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(20));
+	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(10));
 	
 	@Given("I navigate to Naukri Application")
 	public void i_navigate_to_naukri_application() {
