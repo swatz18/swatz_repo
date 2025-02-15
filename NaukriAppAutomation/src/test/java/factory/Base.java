@@ -53,7 +53,7 @@ public static WebDriver initilizeBrowser() throws IOException
              capabilities.setBrowserName("chrome");
              break;
          case "edge":
-        	 WebDriverManager.edgedriver().setup();
+        	 //WebDriverManager.edgedriver().setup();
              capabilities.setBrowserName("MicrosoftEdge");
              break;
          case "firefox":
