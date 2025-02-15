@@ -22,10 +22,25 @@ public class ProfilePageObj extends BaseClass{
 	@FindBy(id="saveDesiredProfile")	WebElement	cp_save_button;
 	@FindBy(xpath="//div[@class=\"mod-date\"]/span[contains(.,\"Today\")]")	WebElement	last_profile_update_status;
 	@FindBy(xpath="//*[@id=\"desiredProfileForm\"]//child::span[contains(.,\"Preferred work\")]")	WebElement location_label;
+	@FindBy(xpath="//a[text()='Update']")	WebElement update_link;
+	@FindBy(xpath="//div[contains(@class,\"resume-name\")]/div") WebElement resume_name;
 	
 	public void clickViewProfile()
 	{
 		view_profile_button.click();
+	}
+	public void clickUpdateLink()
+	{
+		update_link.click();
+	}
+	public void uploadResume()
+	{
+		update_link.sendKeys("E:/Swathi M S Documents/FResume.pdf");
+	}
+	public String validateResumeName()
+	{
+		String name=resume_name.getText();
+		return name;
 	}
 	
 	public void closeChat()

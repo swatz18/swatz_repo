@@ -21,14 +21,22 @@ public class ProfileStepDef {
 	WebDriver driver;
 	LoginPageObj lp;
 	ProfilePageObj pp;
-	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(20));
+	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(15));
 	
-	@Given("I naviagte to my profile")
-	public void i_naviagte_to_my_profile() {
+	@Given("I navigate to Naukri Application")
+	public void i_navigate_to_naukri_application() {
 		lp=new LoginPageObj(Base.getDriver());
 		lp.selectLogin();
+		
+	}
+
+	@Given("enter the credentials")
+	public void enter_the_credentials() {
 		lp.enterCredentials("swathihsnk26@gmail.com", "Welcomemec1!");
 		lp.selectLoginButton();
+	}
+	@Given("I naviagte to my profile")
+	public void i_naviagte_to_my_profile() {
 		pp=new ProfilePageObj(Base.getDriver());
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("View")));
 	    pp.clickViewProfile();
@@ -43,9 +51,9 @@ public class ProfileStepDef {
 	}
 	@When("I click on {string}, select\\/deslect a {string}")
 	public void i_click_on_select_deslect_a(String string, String string2) throws InterruptedException {
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("locationSugg")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationSugg")));
 		pp.clickForLocation();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Chennai']/i")));
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Chennai']/i")));
 	    boolean isSelected=pp.isLocationSelected();
 	    if(isSelected)
 	    {
@@ -58,15 +66,31 @@ public class ProfileStepDef {
 	    	System.out.print("Removed Chennai to location prefernce");
 	    }
 	    pp.clickLocationLabel();
-	    Thread.sleep(2000);
 	}
 	@When("clcik on save button")
 	public void clcik_on_save_button() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("saveDesiredProfile")));
 		pp.clickcpSaveButton();
 	}
 	@Then("I should see profile updated as {string}")
 	public void i_should_see_message(String exp_text) {
 	    String msg=pp.verifyProfileUpdateStatus();
 	    assertTrue(msg.contains(exp_text));
+	}
+	@When("Click on {string} in resume")
+	public void click_on_in_resume(String string) {
+	    pp.clickUpdateLink();
+	}
+
+	@When("I click on resume that has to be uploaded")
+	public void i_click_on_resume_that_has_to_be_uploaded() {
+	    pp.uploadResume();
+	}
+
+	@Then("Resume should br uploaded successfully")
+	public void resume_should_br_uploaded_successfully() {
+	    String name=pp.validateResumeName();
+	    assertTrue(name.contains("FResume.pdf"));
+	    
 	}
 }

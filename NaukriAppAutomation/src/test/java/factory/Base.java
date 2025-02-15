@@ -13,6 +13,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class Base {
 
 	 static WebDriver driver;
@@ -32,7 +34,7 @@ public static WebDriver initilizeBrowser() throws IOException
 		//os
 		 switch (os) {
          case "windows":
-             capabilities.setPlatform(Platform.WIN11);
+             capabilities.setPlatform(Platform.WINDOWS);
              break;
          case "mac":
              capabilities.setPlatform(Platform.MAC);
@@ -51,6 +53,7 @@ public static WebDriver initilizeBrowser() throws IOException
              capabilities.setBrowserName("chrome");
              break;
          case "edge":
+        	 WebDriverManager.edgedriver().setup();
              capabilities.setBrowserName("MicrosoftEdge");
              break;
          case "firefox":
@@ -69,12 +72,15 @@ public static WebDriver initilizeBrowser() throws IOException
 			switch(browser.toLowerCase()) 
 			{
 			case "chrome":
+				WebDriverManager.chromedriver().setup();
 		        driver=new ChromeDriver();
 		        break;
 		    case "edge":
+		    	WebDriverManager.edgedriver().setup();
 		    	driver=new EdgeDriver();
 		        break;
 		    case "firefox":
+		    	WebDriverManager.firefoxdriver().setup();
 		    	driver=new FirefoxDriver();
 		        break;
 		    default:
