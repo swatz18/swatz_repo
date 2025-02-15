@@ -18,6 +18,6 @@ Feature: Naukri Application Login functionality
 	@validLogin
   Scenario: Valid Login of Naukri Application
     Given I want to land in Naukri Application
-    When I enter Username as "swathihsnk26@gmail.com" and Password as "Welcomemec1!"
+    When I enter Username as "xxxxxx@gmail.com" and Password as "xxxxxxx"
     And clcik the Login button
     Then user should land in home page
