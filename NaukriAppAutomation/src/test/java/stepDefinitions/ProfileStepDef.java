@@ -21,7 +21,7 @@ public class ProfileStepDef {
 	WebDriver driver;
 	LoginPageObj lp;
 	ProfilePageObj pp;
-	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(10));
+	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(20));
 	
 	@Given("I naviagte to my profile")
 	public void i_naviagte_to_my_profile() {
@@ -43,7 +43,7 @@ public class ProfileStepDef {
 	}
 	@When("I click on {string}, select\\/deslect a {string}")
 	public void i_click_on_select_deslect_a(String string, String string2) throws InterruptedException {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationSugg")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("locationSugg")));
 		pp.clickForLocation();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Chennai']/i")));
 	    boolean isSelected=pp.isLocationSelected();
