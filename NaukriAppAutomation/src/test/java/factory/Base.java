@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -50,6 +51,9 @@ public static WebDriver initilizeBrowser() throws IOException
 		//browser
 		 switch (browser) {
          case "chrome":
+        	 ChromeOptions op=new ChromeOptions();
+        	 op.addArguments("--no-sandbox");
+        	 op.addArguments("--disable-dev-shm-usage");
              capabilities.setBrowserName("chrome");
              break;
          case "edge":
