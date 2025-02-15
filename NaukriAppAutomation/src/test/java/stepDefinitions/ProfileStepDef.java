@@ -21,7 +21,7 @@ public class ProfileStepDef {
 	WebDriver driver;
 	LoginPageObj lp;
 	ProfilePageObj pp;
-	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(10));
+	WebDriverWait wait=new WebDriverWait(Base.getDriver(),Duration.ofSeconds(15));
 	
 	@Given("I navigate to Naukri Application")
 	public void i_navigate_to_naukri_application() {
@@ -32,7 +32,7 @@ public class ProfileStepDef {
 
 	@Given("enter the credentials")
 	public void enter_the_credentials() {
-		lp.enterCredentials("swathihsnk26@gmail.com", "Welcomemec1!");
+		lp.enterCredentials("xxxxxxx@gmail.com", "xxxxxxxx");
 		lp.selectLoginButton();
 	}
 	@Given("I naviagte to my profile")
@@ -43,15 +43,17 @@ public class ProfileStepDef {
 	    //pp.closeChat();
 	}
 	@Given("Click on carrer profile")
-	public void click_on_carrer_profile() {
+	public void click_on_carrer_profile() throws InterruptedException {
 	    pp.clickCarrerProfile();
+	    Thread.sleep(3000);
 	    pp.editCarrerProfile();
 	    boolean res=pp.verifyFormIsPresent();
 	    assertTrue(res);
 	}
 	@When("I click on {string}, select\\/deslect a {string}")
 	public void i_click_on_select_deslect_a(String string, String string2) throws InterruptedException {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationSugg")));
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("locationSugg")));
+		Thread.sleep(4000);
 		pp.clickForLocation();
 		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Chennai']/i")));
 	    boolean isSelected=pp.isLocationSelected();

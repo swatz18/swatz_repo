@@ -51,7 +51,7 @@ public static WebDriver initilizeBrowser() throws IOException
 		//browser
 		 switch (browser) {
          case "chrome":
-        	 ChromeOptions op=new ChromeOptions();
+        	 ChromeOptions op=new ChromeOptions();// 3 lines to skip the session not created exception
         	 op.addArguments("--no-sandbox");
         	 op.addArguments("--disable-dev-shm-usage");
              capabilities.setBrowserName("chrome");
@@ -80,7 +80,7 @@ public static WebDriver initilizeBrowser() throws IOException
 		        driver=new ChromeDriver();
 		        break;
 		    case "edge":
-		    	WebDriverManager.edgedriver().setup();
+		    	WebDriverManager.edgedriver().setup(); //wbmanager installs the compatible version of browser with driver and runs
 		    	driver=new EdgeDriver();
 		        break;
 		    case "firefox":
