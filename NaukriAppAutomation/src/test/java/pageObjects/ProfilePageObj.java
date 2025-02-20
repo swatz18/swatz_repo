@@ -21,7 +21,7 @@ public class ProfilePageObj extends BaseClass{
 	@FindBy(xpath="//*[text()=\"Chennai\"]/i")	WebElement	location_add;
 	@FindBy(id="saveDesiredProfile")	WebElement	cp_save_button;
 	@FindBy(xpath="//div[@class=\"mod-date\"]/span[contains(.,\"Today\")]")	WebElement	last_profile_update_status;
-	@FindBy(xpath="//*[@id=\"desiredProfileForm\"]//child::span[contains(.,\"Preferred work\")]")	WebElement location_label;
+	@FindBy(xpath="//span[contains(text(),\"Preferred work\")]")	WebElement location_label;
 	@FindBy(xpath="//a[text()='Update']")	WebElement update_link;
 	@FindBy(xpath="//div[contains(@class,\"resume-name\")]/div") WebElement resume_name;
 	
